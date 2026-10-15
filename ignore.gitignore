@@ -1,0 +1,15 @@
+# Java
+*.class
+bin/
+out/
+target/
+*.jar
+
+# Archivos temporales
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Datos masivos generados
+datos_generados/
