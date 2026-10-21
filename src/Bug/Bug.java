@@ -19,11 +19,11 @@ public class Bug {
         this.fecha=fecha;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
