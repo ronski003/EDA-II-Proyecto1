@@ -95,4 +95,29 @@ public class GestorBugs {
     public int cantidad() {
         return bugs.size();
     }
+
+    /**
+ * Registra un conjunto de bugs utilizando la misma
+ * lógica de identificación e inserción individual.
+ *
+ * @param datos colección de bugs provisionales.
+ * @return cantidad de bugs registrados.
+ */
+public int agregarLote(ArrayList<Bug> datos) {
+
+    if (datos == null || datos.contains(null)) {
+        throw new IllegalArgumentException(
+            "El lote contiene datos inválidos"
+        );
+    }
+
+    int registrados = 0;
+
+    for (Bug bug : datos) {
+        agregar(bug);
+        registrados++;
+    }
+
+    return registrados;
+}
 }
