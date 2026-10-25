@@ -9,7 +9,9 @@ public abstract class Ordenamiento {
         this.bugs = bugs;
     }
 
-    public abstract void ordenar();
+    public abstract void ordenarMayor(ArrayList<Bug> lista);
+    public abstract void ordenarMenor(ArrayList<Bug> lista);
+    public abstract void ordenarString(ArrayList<Bug> lista);
 
     public ArrayList<Bug> getBugs() {
         return bugs;
