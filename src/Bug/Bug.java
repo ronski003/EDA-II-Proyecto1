@@ -3,26 +3,27 @@ package Bug;
 import java.time.LocalDate;
 
 public class Bug {
-    private String ID;
+    private int ID;
     private int prioridad;
     private int nivelSeguridad;
     private String estado;
-    private int categoria;
+    private String categoria;
     private LocalDate fecha;
 
-    public Bug(String ID, int prioridad, int nivelseguridad, String estado, int categoria){
+    public Bug(int ID, int prioridad, int nivelseguridad, String estado, String categoria,LocalDate fecha){
         this.ID=ID;
         this.prioridad=prioridad;
         this.nivelSeguridad=nivelseguridad;
         this.estado=estado;
         this.categoria=categoria;
+        this.fecha=fecha;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -50,11 +51,11 @@ public class Bug {
         this.estado = estado;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
