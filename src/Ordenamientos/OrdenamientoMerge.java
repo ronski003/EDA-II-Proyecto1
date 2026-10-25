@@ -7,7 +7,7 @@ public class OrdenamientoMerge extends Ordenamiento {
     private int inicio;
     private int fin;
 
-
+//****************************************************************************************************************************************************************** */
     public OrdenamientoMerge(ArrayList<Bug> bugs) {
         super(bugs);
     }
