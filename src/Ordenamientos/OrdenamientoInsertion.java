@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class OrdenamientoInsertion extends Ordenamiento{
 
-    public OrdenamientoInsertion(ArrayList<Bug> bugs) {
-        super(bugs);
+    public OrdenamientoInsertion() {
+
 
     }
 
@@ -14,7 +14,7 @@ public class OrdenamientoInsertion extends Ordenamiento{
     @Override
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista) {
         int n=lista.size();
-        ArrayList<Bug> temporal=lista;
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
         for (int j = 1; j < n; j++) {  
             Bug key = temporal.get(j);  
             int i = j-1;  
@@ -32,7 +32,7 @@ public class OrdenamientoInsertion extends Ordenamiento{
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
         int n=lista.size();
-        ArrayList<Bug> temporal=lista;
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
         for (int j = 1; j < n; j++) {  
             Bug key = temporal.get(j);  
             int i = j-1;  
@@ -50,7 +50,7 @@ public class OrdenamientoInsertion extends Ordenamiento{
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
         int n=lista.size();
-        ArrayList<Bug> temporal=lista;
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
         for (int j = 1; j < n; j++) {  
             Bug key = temporal.get(j);  
             int i = j-1;  
