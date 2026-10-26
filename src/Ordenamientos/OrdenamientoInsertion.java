@@ -4,7 +4,7 @@ import Bug.Bug;
 import java.util.ArrayList;
 /**
  * @author Equipo 10
- * Clase ordenameinto merge
+ * Clase ordenameinto por Insertion
  * OrdenamientoInsertion
  */
 public class OrdenamientoInsertion implements Ordenamiento{
