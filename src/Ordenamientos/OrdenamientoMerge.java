@@ -7,10 +7,11 @@ public class OrdenamientoMerge extends Ordenamiento {
     private int inicio;
     private int fin;
 
-//****************************************************************************************************************************************************************** */
     public OrdenamientoMerge(ArrayList<Bug> bugs) {
         super(bugs);
     }
+
+    //****************************************************************************************************************************************************************** */
     /**(non-Javadoc)
     * merge para id
     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
@@ -53,7 +54,7 @@ public class OrdenamientoMerge extends Ordenamiento {
         int k = izq;
 
         while(i<n1 && j<n2){
-            if(arrizq.get(i).getID()>=arrder.get(j).getID()){
+            if(arrizq.get(i).getPrioridad()>=arrder.get(j).getPrioridad()){
                 lista.set(k,arrizq.get(i));
                 i++;
             }
@@ -121,7 +122,7 @@ public class OrdenamientoMerge extends Ordenamiento {
         int k = izq;
 
         while(i<n1 && j<n2){
-            if(arrizq.get(i).getID()<=arrder.get(j).getID()){//importante
+            if(arrizq.get(i).getPrioridad()<=arrder.get(j).getPrioridad()){//importante
                 lista.set(k,arrizq.get(i));
                 i++;
             }
