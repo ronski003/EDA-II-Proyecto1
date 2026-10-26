@@ -2,15 +2,21 @@ package Ordenamientos;
 
 import Bug.Bug;
 import java.util.ArrayList;
-
-public class OrdenamientoInsertion extends Ordenamiento{
+/**
+ * @author Equipo 10
+ * Clase ordenameinto merge
+ * OrdenamientoInsertion
+ */
+public class OrdenamientoInsertion implements Ordenamiento{
 
     public OrdenamientoInsertion() {
-
-
     }
 
 /******************************************************************************************************************************************************************************** */    
+    /**    (non-Javadoc)
+     * Metodo de ordenamiento mayor a menor del atributo prioridad con insertion sort
+     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     */
     @Override
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista) {
         int n=lista.size();
@@ -29,6 +35,10 @@ public class OrdenamientoInsertion extends Ordenamiento{
     }
 
 /********************************************************************************************************************************************************************************/
+    /**    (non-Javadoc)
+     * Metodo de ordenamiento menor a mayor del atributo prioridad con Insertion sort
+     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     */
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
         int n=lista.size();
@@ -47,6 +57,10 @@ public class OrdenamientoInsertion extends Ordenamiento{
     }
 
 /********************************************************************************************************************************************************************************/
+    /**    (non-Javadoc)
+     * Metodo de ordenamiento menor a mayor del atributo estado con insertion sort
+     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     */  
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
         int n=lista.size();
