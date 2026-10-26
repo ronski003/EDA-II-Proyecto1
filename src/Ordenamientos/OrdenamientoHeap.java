@@ -7,9 +7,10 @@ import java.util.ArrayList;
 
 public class OrdenamientoHeap extends Ordenamiento{
 
-    public OrdenamientoHeap(ArrayList<Bug> bugs) {
-        super(bugs);
+    public OrdenamientoHeap() {
     }
+
+
 /************************************************************************************************************************/
     //Heap nivel de seguridad mayor a menor
     @Override 

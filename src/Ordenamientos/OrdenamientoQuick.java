@@ -107,9 +107,4 @@ public class OrdenamientoQuick extends Ordenamiento{
         swap(listaAux, i+1, high);
         return (i+1);
     }
-
-
-
-    
-
 }
