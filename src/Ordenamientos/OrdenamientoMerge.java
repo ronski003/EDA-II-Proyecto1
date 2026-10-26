@@ -4,11 +4,8 @@ import Bug.Bug;
 import java.util.ArrayList;
 
 public class OrdenamientoMerge extends Ordenamiento {
-    private int inicio;
-    private int fin;
 
-    public OrdenamientoMerge(ArrayList<Bug> bugs) {
-        super(bugs);
+    public OrdenamientoMerge() {
     }
 
     //****************************************************************************************************************************************************************** */
@@ -19,10 +16,10 @@ public class OrdenamientoMerge extends Ordenamiento {
     @Override
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista) {
         //merge
-        ArrayList<Bug> temporal=lista;
-        this.inicio=0;
-        this.fin=temporal.size()-1;
-        mergesort(temporal, this.inicio, this.fin);
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
+        int inicio=0;
+        int fin=temporal.size()-1;
+        mergesort(temporal, inicio, fin);
         return temporal;
 
     }
@@ -87,10 +84,10 @@ public class OrdenamientoMerge extends Ordenamiento {
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
        //merge
-        ArrayList<Bug> temporal=lista;
-        this.inicio=0;
-        this.fin=temporal.size()-1;
-        mergesortMenor(temporal, this.inicio, this.fin);
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
+        int inicio=0;
+        int fin=temporal.size()-1;
+        mergesortMenor(temporal, inicio, fin);
         return temporal;
 
     }
@@ -154,10 +151,10 @@ public class OrdenamientoMerge extends Ordenamiento {
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
        //merge
-        ArrayList<Bug> temporal=lista;
-        this.inicio=0;
-        this.fin=temporal.size()-1;
-        mergesortString(temporal, this.inicio, this.fin);
+        ArrayList<Bug> temporal=new ArrayList<>(lista);
+        int inicio=0;
+        int fin=temporal.size()-1;
+        mergesortString(temporal, inicio, fin);
         return temporal;
 
     }
