@@ -7,8 +7,7 @@ public class OrdenamientoQuick extends Ordenamiento{
 
 
     
-    public OrdenamientoQuick(ArrayList<Bug> bugs) {
-        super(bugs);
+    public OrdenamientoQuick() {
     }
 
     //Ordenar con Quick de mayor a menor la fecha
