@@ -18,6 +18,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
     /**(non-Javadoc)
     * Metodo ordenarMayor para ordenar de mayor a menor el atributo prioridad con merge sort
     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+    * @param lista lista de bugs
     */
     @Override
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista) {
@@ -32,11 +33,11 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo que implementa el algoritmo mergesort mayor a menor con valores enteros
-     * @param lista
-     * @param izq
-     * @param der
+     * @param lista lista de bugs
+     * @param izq primer indice de la lista
+     * @param der ultimo indice de la lista
      */
-    public void mergesort(ArrayList<Bug> lista, int izq,int der){
+    private void mergesort(ArrayList<Bug> lista, int izq,int der){
         if (izq<der){
             int mitad=(izq+der)/2; 
             
@@ -49,12 +50,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo Merge para Ordenar de Mayor a Menor
-     * @param lista
-     * @param izq
-     * @param mitad
-     * @param der
+     * @param lista lista de bugs
+     * @param izq indice del primer elemento de la lista
+     * @param mitad indice del elemento a la mita de la lista
+     * @param der indice del ultimo elemento de la lista
      */
-    public void merge(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void merge(ArrayList<Bug> lista,int izq, int mitad, int der){
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
@@ -99,6 +100,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
     /**(non-Javadoc)
     * Metodo para ordenar de menor a mayor el atributo prioridad con merge sort
     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+    * @param lista lista de bugs
     */
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
@@ -113,11 +115,11 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo que implementa el algoritmo mergesort menor a mayor con valores enteros
-     * @param lista
-     * @param izq
-     * @param der
+     * @param lista lista de bugs
+     * @param izq primer indice de la lista
+     * @param der ultimo indice de la lista
      */
-    public void mergesortMenor(ArrayList<Bug> lista, int izq,int der){
+    private void mergesortMenor(ArrayList<Bug> lista, int izq,int der){
         if (izq<der){
             int mitad=(izq+der)/2; 
             
@@ -130,12 +132,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo Merge para Ordenar de Menor a Mayor
-     * @param lista
-     * @param izq
-     * @param mitad
-     * @param der
+     * @param lista lista de bugs
+     * @param izq indice del primer elemento de la lista
+     * @param mitad indice del elemento a la mita de la lista
+     * @param der indice del ultimo elemento de la lista
      */
-    public void mergeMenor(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void mergeMenor(ArrayList<Bug> lista,int izq, int mitad, int der){
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
@@ -179,6 +181,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
     /**(non-Javadoc)
     * Metodo para ordenar de menor a mayor el atributo estado con merge sort
     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+    * @param lista lista de bugs
     */
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
@@ -193,11 +196,11 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo que implementa el algoritmo mergesort metodo con valores String
-     * @param lista
-     * @param izq
-     * @param der
+     * @param lista lista de bugs
+     * @param izq primer indice de la lista
+     * @param der ultimo indice de la lista
      */
-    public void mergesortString(ArrayList<Bug> lista, int izq,int der){
+    private void mergesortString(ArrayList<Bug> lista, int izq,int der){
         if (izq<der){
             int mitad=(izq+der)/2; 
             
@@ -210,12 +213,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
     /**
      * Metodo Merge para Ordenar de Menor a Mayor el atributo estado
-     * @param lista
-     * @param izq
-     * @param mitad
-     * @param der
+     * @param lista lista de bugs
+     * @param izq indice del primer elemento de la lista
+     * @param mitad indice del elemento a la mita de la lista
+     * @param der indice del ultimo elemento de la lista
      */
-    public void mergeString(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void mergeString(ArrayList<Bug> lista,int izq, int mitad, int der){
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
