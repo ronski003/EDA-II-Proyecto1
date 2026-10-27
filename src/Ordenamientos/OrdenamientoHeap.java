@@ -3,16 +3,26 @@ package Ordenamientos;
 import Bug.Bug;
 import java.util.ArrayList;
 
-
-
-public class OrdenamientoHeap extends Ordenamiento{
-
+/**
+ * @author Equipo 10
+ * Clase ordenamiento con Heap Sort
+ * OrdenamientoHeap
+ */
+public class OrdenamientoHeap implements  Ordenamiento{
+    /**
+     * Constructor de la clase Ordenamineto
+     */
     public OrdenamientoHeap() {
     }
 
 
 /************************************************************************************************************************/
-    //Heap nivel de seguridad mayor a menor
+    
+    /**    (non-Javadoc)
+     * Ordena la lista de bugs por nivel de seguridad mayor a menor
+     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @param lista recibe la lista de bugs
+     */
     @Override 
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista){
         ArrayList<Bug> listaFinal= new ArrayList<>(lista);
@@ -27,6 +37,11 @@ public class OrdenamientoHeap extends Ordenamiento{
         return listaFinal;
     }
 
+    /**
+     * Metodo que construye un MinHeap con la lista recibida como paramertro
+     * @param listaAux recibe una lista de bugs
+     * @param size recibe el tamaño del heap
+     */
      private void BuildHeapMayor(ArrayList<Bug> listaAux,int size){
         int tamañoHeap=size-1;
         for (int i = (size-1)/2;i>=0;i--){
@@ -34,6 +49,12 @@ public class OrdenamientoHeap extends Ordenamiento{
         }
     }
 
+    /**
+     * Metodo que mantiene la estructura del MinHeap
+     * @param listaAux Lista de bugs
+     * @param i indice del nodo
+     * @param tamañoHeap tamaño del heap
+     */
      private void HeapifyMayor(ArrayList<Bug> listaAux,int i,int tamañoHeap){
         int l=2*i+1;
         int r=2*i+2;
@@ -55,7 +76,13 @@ public class OrdenamientoHeap extends Ordenamiento{
     }   
 
 /*************************************************************************************************************************/
-    //Heap nivel de seguridad menor a mayor
+    
+    
+    /**    (non-Javadoc)
+     * Heap nivel de seguridad menor a mayor
+     * @see Ordenamientos.Ordenamiento#ordenarMenor(java.util.ArrayList)
+     * @param lista Lista de bugs a ordenar
+     */
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
         ArrayList<Bug> listaFinal = new ArrayList<>(lista);
@@ -71,6 +98,11 @@ public class OrdenamientoHeap extends Ordenamiento{
         
     }
 
+    /**
+     * Metodo que contruye un MaxHeap
+     * @param listaAux Lista de bugs
+     * @param size Tamaño del heap
+     */
     private void BuildHeapMenor(ArrayList<Bug> listaAux,int size){
         int tamañoHeap=size-1;
         for (int i = (size-1)/2;i>=0;i--){
@@ -78,6 +110,12 @@ public class OrdenamientoHeap extends Ordenamiento{
         }
     }
 
+    /**
+     * Metodo que mantiene la estructura del MaxHeap
+     * @param listaAux Lista de Bugs
+     * @param i indice del nodo
+     * @param tamañoHeap Tamaño del heap
+     */
     private void HeapifyMenor(ArrayList<Bug> listaAux,int i,int tamañoHeap){
         int l=2*i+1;
         int r=2*i+2;
@@ -98,13 +136,24 @@ public class OrdenamientoHeap extends Ordenamiento{
         }
     }   
 
+    /**
+     * Metodo que intercambia elementos
+     * @param listaAux lista de bugs
+     * @param i indice de un bug
+     * @param j indice de otro bug
+     */
     private void swap(ArrayList<Bug> listaAux,int i,int j){
         Bug t =listaAux.get(i);
         listaAux.set(i, listaAux.get(j));
         listaAux.set(j, t);
     }
 /***************************************************************************************************************************/
-    //Heap para categoria tipo String
+
+    /**    (non-Javadoc)
+     * Heap para categoria tipo String
+     * @see Ordenamientos.Ordenamiento#ordenarString(java.util.ArrayList)
+     * @param lista Lista de bugs
+     */
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
         ArrayList<Bug> listaFinal = new ArrayList<>(lista);
@@ -119,6 +168,11 @@ public class OrdenamientoHeap extends Ordenamiento{
         return listaFinal;
     }
 
+    /**
+     * Metodo que construye un MaxHeap
+     * @param listaAux lista de bugs
+     * @param size tamaño del heap
+     */
     private void BuildHeapString(ArrayList<Bug> listaAux,int size){
         int tamañoHeap=size-1;
         for (int i = (size-1)/2;i>=0;i--){
@@ -126,6 +180,12 @@ public class OrdenamientoHeap extends Ordenamiento{
         }
     }
 
+    /**
+     * Metodo que mantiene la estructura del MaxHeap
+     * @param listaAux lista de bugs
+     * @param i indice del nodo
+     * @param tamañoHeap tamaño del heap
+     */
     private void HeapifyString(ArrayList<Bug> listaAux,int i,int tamañoHeap){
         int l=2*i+1;
         int r=2*i+2;
