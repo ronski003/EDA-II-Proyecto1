@@ -2,7 +2,10 @@ package Ordenamientos;
 import Bug.Bug;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * @author Equipo 10
+ * OrdenamientoQuick
+ */
 public class OrdenamientoQuick implements  Ordenamiento{
 
     /**
