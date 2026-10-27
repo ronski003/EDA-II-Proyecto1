@@ -99,7 +99,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
     //********************************************************************************************************************************************************************************************* */
     /**(non-Javadoc)
     * Metodo para ordenar de menor a mayor el atributo prioridad con merge sort
-    * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+    * @see Ordenamientos.Ordenamiento#ordenarMenor(java.util.ArrayList)
     * @param lista lista de bugs
     */
     @Override
@@ -180,7 +180,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
 //************************************************************************************************************************************************************************* */
     /**(non-Javadoc)
     * Metodo para ordenar de menor a mayor el atributo estado con merge sort
-    * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+    * @see Ordenamientos.Ordenamiento#ordenarString(java.util.ArrayList)
     * @param lista lista de bugs
     */
     @Override
@@ -234,7 +234,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
         int k = izq;
 
         while(i<n1 && j<n2){
-            if(arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())>=0){//lo importante jaja
+            if(arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())<=0){//lo importante jaja
                 lista.set(k,arrizq.get(i));
                 i++;
             }
