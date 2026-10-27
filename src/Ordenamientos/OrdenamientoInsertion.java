@@ -73,7 +73,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
         for (int j = 1; j < n; j++) {  
             Bug key = temporal.get(j);  
             int i = j-1;  
-            while ( (i > -1) && ( temporal.get(i).getEstado().compareTo(key.getEstado())>=0) ) { 
+            while ( (i > -1) && ( temporal.get(i).getEstado().compareTo(key.getEstado())<=0) ) { 
                 temporal.set(i+1, temporal.get(i));  
                 i--;  
             }  
