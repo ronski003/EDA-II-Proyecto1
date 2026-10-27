@@ -1,7 +1,17 @@
 package HashPlegamiento;
 
+/**
+ * @author Equipo 10
+ * Clase Hash plegamiento
+ * HashPlegamiento
+ */
 public class HashPlegamiento {
 
+    /**
+     * Hash Plegamiento para solo calcular la clave
+     * @param clave
+     * @return
+     */
     public static int hashPlegamiento(int clave){
         String numero = String.valueOf(clave);
         int bloque1 = Integer.parseInt(numero.substring(0, 4));
@@ -11,6 +21,12 @@ public class HashPlegamiento {
         return suma % 10;
     }
 
+    /**
+     * Metodo insertar que es la fucion hash que resuelve colisiones por arreglos anidados
+     * @param contenedor
+     * @param cantidades
+     * @param clave
+     */
     public static void insertar(int[][] contenedor, int[] cantidades, int clave){
         String numero = String.valueOf(clave);
         int bloque1 = Integer.parseInt(numero.substring(0, 4));
@@ -29,6 +45,12 @@ public class HashPlegamiento {
             System.out.println("Colision. Elemento almacenado en la misma posicion hash.");
         }
     }
+
+    /**
+     * Metodo que imprime el contenedor
+     * @param contenedor
+     * @param cantidades
+     */
     public static void imprimirContenedor(int[][] contenedor,int[] cantidades){
         System.out.println("\n--- CONTENEDOR FINAL ---");
         for(int i = 0; i < contenedor.length; i++){
