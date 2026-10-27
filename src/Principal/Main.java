@@ -8,13 +8,30 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Interfaz de consola para administrar reportes de bugs.
- * Toda la lógica de almacenamiento y búsqueda se delega a el gestor de bugs.
+ * Implementa la interfaz de consola del administrador de bugs.
+ *
+ * Presenta las opciones disponibles, solicita y valida
+ * datos de entrada, y muestra los resultados al usuario.
+ *
+ * Delega las operaciones de almacenamiento, consulta y
+ * eliminación a GestorBugs.
+ *
+ * @see GestorBugs
  */
 public class Main {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final GestorBugs gestor = new GestorBugs();
+
+    /**
+     * Punto de entrada de la aplicación.
+     *
+     * Ejecuta el menú principal de manera repetitiva hasta
+     * que el usuario selecciona la opción de salida.
+     *
+     * @param args argumentos de línea de comandos;
+     *             no se utilizan en esta aplicación.
+     */
 
     public static void main(String[] args) {
 
@@ -38,6 +55,10 @@ public class Main {
         scanner.close();
     }
 
+    /**
+     * Muestra en consola las opciones disponibles
+     * para administrar los reportes de bugs.
+     */
     private static void mostrarMenu() {
         System.out.println("\n===== ANALISIS DE BUGS =====");
         System.out.println("1. Registrar bug");
@@ -48,7 +69,18 @@ public class Main {
         System.out.println("0. Salir");
     }
 
-    //Este y metodos similares son validadores, por mero control
+    /**
+     * Solicita un número entero dentro de un rango determinado.
+     *
+     * Valida que la entrada pueda convertirse a entero y que
+     * su valor esté comprendido entre los límites indicados.
+     * Repite la solicitud mientras la entrada sea inválida.
+     *
+     * @param mensaje texto que se muestra antes de la captura.
+     * @param minimo valor mínimo permitido, inclusive.
+     * @param maximo valor máximo permitido, inclusive.
+     * @return número entero válido introducido por el usuario.
+     */
     private static int leerEntero(
             String mensaje, int minimo, int maximo) {
 
@@ -70,7 +102,16 @@ public class Main {
             System.out.println("Entrada inválida. Intenta otra vez.");
         }
     }
-    //espera cadenas no vacias
+    
+    /**
+     * Solicita una cadena de texto no vacía.
+     *
+     * Elimina los espacios al inicio y final de la entrada
+     * y repite la captura si el resultado está vacío.
+     *
+     * @param mensaje texto mostrado al solicitar la entrada.
+     * @return cadena de texto no vacía.
+     */
     private static String leerTexto(String mensaje) {
 
         while (true) {
