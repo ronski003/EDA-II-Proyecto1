@@ -125,6 +125,16 @@ public class Main {
             System.out.println("El campo no puede estar vacío.");
         }
     }
+
+    /**
+     * Solicita una fecha válida con formato ISO AAAA-MM-DD.
+     *
+     * Intenta convertir el texto recibido a LocalDate
+     * y repite la captura cuando el formato o fecha
+     * proporcionados son inválidos.
+     *
+     * @return fecha válida introducida por el usuario.
+     */
     private static LocalDate leerFecha() {
 
         while (true) {
@@ -138,7 +148,15 @@ public class Main {
         }
     }
 
-    //captura los datos de un bug y lo registra
+    /**
+     * Captura los atributos de un nuevo reporte de bug.
+     *
+     * Solicita prioridad, nivel de seguridad, estado,
+     * categoría y fecha. Construye un objeto provisional
+     * y lo envía al gestor para obtener su ID definitivo.
+     *
+     * Finalmente muestra el registro creado.
+     */
     private static void registrarBug() {
 
         System.out.println("\n--- REGISTRAR BUG ---");
@@ -171,9 +189,7 @@ public class Main {
         LocalDate fecha = leerFecha();
 
         // El gestor asignará el identificador definitivo.
-        Bug datos = new Bug(
-            0, prioridad, seguridad, estado, categoria, fecha
-        );
+        Bug datos = new Bug(0, prioridad, seguridad, estado, categoria, fecha);
 
         Bug registrado = gestor.agregar(datos);
 
@@ -181,7 +197,13 @@ public class Main {
         mostrarBug(registrado);
     }
 
-    //Busca un bug apartir de su ID y los datos de la tabla hash
+    /**
+     * Solicita un identificador y consulta el reporte
+     * correspondiente mediante GestorBugs.
+     *
+     * Muestra los atributos del bug encontrado o informa
+     * al usuario cuando el identificador no existe.
+     */
     private static void buscarBug() {
 
         System.out.println("\n--- BUSCAR BUG ---");
@@ -198,7 +220,13 @@ public class Main {
         }
     }
 
-    //Elimina un bug apartir de su ID
+    /**
+     * Solicita el identificador de un reporte y
+     * pide al gestor que lo elimine.
+     *
+     * Informa si la eliminación fue exitosa o
+     * si no existe un reporte con dicho ID.
+     */
     private static void eliminarBug() {
 
         System.out.println("\n--- ELIMINAR BUG ---");
@@ -216,7 +244,16 @@ public class Main {
         }
     }
 
-    //Solo muestra hasta 30 bugs por registro
+    /**
+     * Muestra los reportes registrados en el sistema.
+     *
+     * Obtiene una copia de la lista principal y presenta
+     * hasta treinta elementos para evitar una salida
+     * excesiva en la consola.
+     *
+     * Informa la cantidad total cuando existen más
+     * registros de los que se muestran.
+     */
     private static void listarBugs() {
 
         System.out.println("\n--- LISTADO DE BUGS ---");
@@ -242,13 +279,21 @@ public class Main {
         }
     }
 
+    /**
+     * Consulta y muestra el número total de reportes
+     * de bugs almacenados actualmente.
+     */
     private static void mostrarCantidad() {
         System.out.println(
             "Total de bugs registrados: " + gestor.cantidad()
         );
     }
 
-    //Muestra los atributos de un objeto bug
+    /**
+     * Muestra los atributos de un reporte de bug en consola.
+     *
+     * @param bug objeto Bug cuyos datos se desea presentar.
+     */
     private static void mostrarBug(Bug bug) {
 
         System.out.println("--------------------------");
