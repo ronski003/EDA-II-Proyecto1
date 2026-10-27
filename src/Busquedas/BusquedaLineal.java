@@ -13,8 +13,8 @@ public class BusquedaLineal {
     /**************************************************************************************************************************************** */
     /**
      * Busqueda Lineal para la prioridad ordenada con Merge
-     * @param listaBugs
-     * @param prioridad
+     * @param listaBugs Lista de bugs
+     * @param prioridad Prioridad a buscar
      * @return la lista de los elementos encontrados
      */
     public ArrayList<Bug> BusquedaLinealPrioridad(ArrayList<Bug> listaBugs, int prioridad){
@@ -35,8 +35,8 @@ public class BusquedaLineal {
     
     /**
      * Busqueda Lineal para el estado ordenado con Insertion
-     * @param listaBugs
-     * @param prioridad
+     * @param listaBugs Lista de bugs
+     * @param estado estado de bug a buscar
      * @return la lista de los elementos encontrados
      */
     public ArrayList<Bug> BusquedaLinealEstado(ArrayList<Bug> listaBugs, String estado){
