@@ -40,7 +40,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
 /********************************************************************************************************************************************************************************/
     /**    (non-Javadoc)
      * Metodo de ordenamiento menor a mayor del atributo prioridad con Insertion sort
-     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @see Ordenamientos.Ordenamiento#ordenarMenor(java.util.ArrayList)
      * @param lista lista de bugs
      */
     @Override
@@ -63,7 +63,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
 /********************************************************************************************************************************************************************************/
     /**    (non-Javadoc)
      * Metodo de ordenamiento menor a mayor del atributo estado con insertion sort
-     * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @see Ordenamientos.Ordenamiento#ordenarString(java.util.ArrayList)
      * @param lista lista de bugs
      */  
     @Override
