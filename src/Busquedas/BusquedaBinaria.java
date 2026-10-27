@@ -16,8 +16,8 @@ public class BusquedaBinaria {
 
     /**
      * Busqueda Binaria para la fecha ordenando con quick
-     * @param listaBugs
-     * @param fecha
+     * @param listaBugs Lista de bugs
+     * @param fecha fecha por la que se buscara incidentes
      * @return la lista de los elementos encontrados
      */
     public ArrayList<Bug> BusquedaBinariaFecha(ArrayList<Bug> listaBugs,LocalDate fecha){
@@ -54,8 +54,8 @@ public class BusquedaBinaria {
     
     /**
      * Busqueda Binaria para el nivel de seguridad ordenando con heap
-     * @param listaBugs
-     * @param nivelSeguridad
+     * @param listaBugs lista de bugs
+     * @param nivelSeguridad nivel de seguridad a buscar
      * @return la lista de los elementos encontrados
      */
     public ArrayList<Bug> busquedaBinariaNivelSeguridad(ArrayList<Bug> listaBugs,int nivelSeguridad){
@@ -92,8 +92,8 @@ public class BusquedaBinaria {
 
     /**
      * Busqueda Binaria para la categoria ordenando con quick
-     * @param listaBugs
-     * @param categoria
+     * @param listaBugs lista de bugs
+     * @param categoria categoria a buscar
      * @return la lista de los elementos encontrados
      */
 
