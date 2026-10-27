@@ -8,7 +8,9 @@ import java.util.ArrayList;
  * OrdenamientoInsertion
  */
 public class OrdenamientoInsertion implements Ordenamiento{
-
+    /**
+     * Constructor de la clase OrdenamientoInsertion
+     */
     public OrdenamientoInsertion() {
     }
 
@@ -16,6 +18,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
     /**    (non-Javadoc)
      * Metodo de ordenamiento mayor a menor del atributo prioridad con insertion sort
      * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @param lista lista de bugs
      */
     @Override
     public ArrayList<Bug> ordenarMayor(ArrayList<Bug> lista) {
@@ -38,6 +41,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
     /**    (non-Javadoc)
      * Metodo de ordenamiento menor a mayor del atributo prioridad con Insertion sort
      * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @param lista lista de bugs
      */
     @Override
     public ArrayList<Bug> ordenarMenor(ArrayList<Bug> lista) {
@@ -60,6 +64,7 @@ public class OrdenamientoInsertion implements Ordenamiento{
     /**    (non-Javadoc)
      * Metodo de ordenamiento menor a mayor del atributo estado con insertion sort
      * @see Ordenamientos.Ordenamiento#ordenarMayor(java.util.ArrayList)
+     * @param lista lista de bugs
      */  
     @Override
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
