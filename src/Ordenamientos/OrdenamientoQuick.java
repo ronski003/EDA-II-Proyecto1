@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 
 
-public class OrdenamientoQuickHeap implements  Ordenamiento{
+public class OrdenamientoQuick implements Ordenamiento{
 
-    public OrdenamientoQuickHeap() {     
+    public OrdenamientoQuick() {     
     }
 
 
