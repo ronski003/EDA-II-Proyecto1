@@ -1,9 +1,17 @@
 package Principal;
 
 import Bug.Bug;
+import Busquedas.BusquedaBinaria;
+import Busquedas.BusquedaLineal;
+import GeneradorBugs.GenerarBug;
 import Gestor.GestorBugs;
+import Ordenamientos.OrdenamientoHeap;
+import Ordenamientos.OrdenamientoInsertion;
+import Ordenamientos.OrdenamientoMerge;
+import Ordenamientos.OrdenamientoQuick;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,40 +43,52 @@ public class Main {
 
     public static void main(String[] args) {
 
+        GenerarBug generador = new GenerarBug();
+
+        for (int i = 0; i < 200; i++) {
+            gestor.agregar(generador.crearBug());
+        }
+
+        System.out.println(
+            "Sistema inicializado con " + gestor.cantidad() + " bugs."
+        );
+
         int opcion;
 
-        do {
-            mostrarMenu();
-            opcion = leerEntero("Selecciona una opción: ", 0, 5);
+    do {
+        mostrarMenu();
+        opcion = leerEntero("Selecciona una opción: ", 0, 7);
 
-            switch (opcion) {
-                case 1 -> registrarBug();
-                case 2 -> buscarBug();
-                case 3 -> eliminarBug();
-                case 4 -> listarBugs();
-                case 5 -> mostrarCantidad();
-                case 0 -> System.out.println("Goodbye ;)");
-            }
+        switch (opcion) {
+            case 1 -> registrarBug();
+            case 2 -> menuBusquedas();
+            case 3 -> eliminarBug();
+            case 4 -> listarBugs();
+            case 5 -> mostrarCantidad();
+            case 6 -> menuOrdenamientos();
+            case 7 -> generarLote();
+            case 0 -> System.out.println("Goodbye ;)");
+        }
 
-        } while (opcion !=0);
-
-        scanner.close();
+    } while (opcion != 0);
+    scanner.close();
     }
 
     /**
-     * Muestra en consola las opciones disponibles
-     * para administrar los reportes de bugs.
+     * Muestra el menú principal del administrador de bugs.
      */
     private static void mostrarMenu() {
-        System.out.println("\n===== ANALISIS DE BUGS =====");
+
+        System.out.println("\n===== ADMINISTRADOR DE BUGS =====");
         System.out.println("1. Registrar bug");
-        System.out.println("2. Buscar bug por ID");
-        System.out.println("3. Eliminar bug por ID");
-        System.out.println("4. Listar bugs");
-        System.out.println("5. Contar bugs");
+        System.out.println("2. Buscar bugs");
+        System.out.println("3. Eliminar bug");
+        System.out.println("4. Listar todos");
+        System.out.println("5. Cantidad de bugs");
+        System.out.println("6. Ordenar bugs");
+        System.out.println("7. Generar lote aleatorio");
         System.out.println("0. Salir");
     }
-
     /**
      * Solicita un número entero dentro de un rango determinado.
      *
@@ -181,9 +201,7 @@ public class Main {
 
         int opcionCategoria = leerEntero("Elige categoría: ", 1, 4);
 
-        String[] categorias = {
-            "Interfaz", "Seguridad", "Logica", "Rendimiento"
-        };
+        String[] categorias = {"Interfaz", "Seguridad", "Logica", "Rendimiento"};
 
         String categoria = categorias[opcionCategoria - 1];
         LocalDate fecha = leerFecha();
@@ -195,6 +213,184 @@ public class Main {
 
         System.out.println("\nBug registrado correctamente.");
         mostrarBug(registrado);
+    }
+
+
+    /**
+     * Genera y registra un lote de bugs aleatorios.
+     *
+     * Inserta cada registro inmediatamente mediante GestorBugs,
+     * evitando almacenar un lote adicional en memoria.
+     *
+     * Mide el tiempo total de generación e inserción.
+     */
+    private static void generarLote() {
+
+        System.out.println("\n===== GENERAR LOTE ALEATORIO =====");
+        System.out.println("1. 200 bugs");
+        System.out.println("2. 1,000 bugs");
+        System.out.println("3. 10,000 bugs");
+        System.out.println("4. 100,000 bugs");
+        System.out.println("5. 1,000,000 bugs");
+        System.out.println("0. Cancelar");
+
+        int opcion = leerEntero("Selecciona: ", 0, 5);
+
+        if (opcion == 0) {
+            return;
+        }
+
+        int[] cantidades = {
+            200, 1000, 10000, 100000, 1000000
+        };
+
+        int cantidad = cantidades[opcion - 1];
+
+        System.out.println(
+            "\nSe agregarán " + cantidad
+            + " bugs a los " + gestor.cantidad()
+            + " existentes."
+        );
+
+        int confirmar = leerEntero(
+            "¿Confirmar generación? (1=Sí, 0=No): ",
+            0, 1
+        );
+
+        if (confirmar == 0) {
+            System.out.println("Operación cancelada.");
+            return;
+        }
+
+        GenerarBug generador = new GenerarBug();
+
+        int registrados = 0;
+        long inicio = System.nanoTime();
+
+        for (int i = 0; i < cantidad; i++) {
+            gestor.agregar(generador.crearBug());
+            registrados++;
+        }
+
+        long fin = System.nanoTime();
+
+        double segundos = (fin - inicio) / 1_000_000_000.0;
+
+        System.out.println("\n--- RESULTADOS ---");
+        System.out.println("Bugs agregados: " + registrados);
+        System.out.println("Total almacenado: " + gestor.cantidad());
+        System.out.printf("Tiempo total: %.4f segundos%n", segundos);
+    }
+
+
+    /**
+     * Permite consultar bugs utilizando distintos criterios.
+     *
+     * El algoritmo empleado depende del atributo elegido:
+     * hashing para ID, búsqueda lineal para prioridad y estado,
+     * y búsqueda binaria para nivel de seguridad, categoría y fecha.
+     */
+    private static void menuBusquedas() {
+
+        BusquedaLineal lineal = new BusquedaLineal();
+        BusquedaBinaria binaria = new BusquedaBinaria();
+
+        int opcion;
+
+        do {
+            System.out.println("\n===== BUSCAR BUGS =====");
+            System.out.println("1. Buscar por ID");
+            System.out.println("2. Buscar por prioridad");
+            System.out.println("3. Buscar por estado");
+            System.out.println("4. Buscar por nivel de seguridad");
+            System.out.println("5. Buscar por categoría");
+            System.out.println("6. Buscar por fecha");
+            System.out.println("0. Regresar");
+
+            opcion = leerEntero("Selecciona: ", 0, 6);
+
+            if (opcion == 0) {
+                break;
+            }
+
+            // Reutilizamos la búsqueda hash existente.
+            if (opcion == 1) {
+                buscarBug();
+                continue;
+            }
+
+            ArrayList<Bug> lista = gestor.listar();
+            ArrayList<Bug> resultados;
+
+            switch (opcion) {
+
+                case 2 -> {
+                    int prioridad = leerEntero("Prioridad (1-3): ", 1, 3);
+
+                    resultados = lineal.BusquedaLinealPrioridad(lista, prioridad);
+
+                    mostrarResultados("Prioridad " + prioridad,resultados);
+                }
+
+                case 3 -> {
+                    System.out.println("1. Resuelto");
+                    System.out.println("2. No resuelto");
+
+                    int estadoElegido = leerEntero("Estado: ", 1, 2);
+
+                    String estado = estadoElegido == 1
+                        ? "Resuelto" : "No resuelto";
+
+                    resultados = lineal.BusquedaLinealEstado(lista, estado);
+
+                    mostrarResultados("Estado: " + estado,resultados);
+                }
+
+                case 4 -> {
+                    int seguridad = leerEntero(
+                        "Nivel de seguridad (1-5): ", 1, 5);
+
+                    resultados =
+                        binaria.busquedaBinariaNivelSeguridad(lista, seguridad);
+
+                    mostrarResultados("Nivel " + seguridad,resultados);
+                }
+
+                case 5 -> {
+                    System.out.println("1. Interfaz");
+                    System.out.println("2. Seguridad");
+                    System.out.println("3. Logica");
+                    System.out.println("4. Rendimiento");
+
+                    int categoria = leerEntero("Categoría: ", 1, 4);
+
+                    String[] categorias = {"Interfaz", "Seguridad","Logica", "Rendimiento"};
+
+                    String seleccionada =
+                        categorias[categoria - 1];
+
+                    resultados = binaria.BusquedaBinariaCategoria(lista, seleccionada);
+
+                    mostrarResultados("Categoría: " + seleccionada, resultados);
+                }
+
+                case 6 -> {
+                    LocalDate fecha = leerFecha();
+
+                    if (lista.size() > 5000) {
+                        System.out.println("La búsqueda binaria por fecha está "+ "limitada provisionalmente a 5000 "+ "registros por el Quick Sort actual.");
+                        break;
+                    }
+
+                    resultados = binaria.BusquedaBinariaFecha(
+                        lista, fecha
+                    );
+
+                    mostrarResultados("Fecha: " + fecha,resultados);
+                }
+            }
+
+        } while (opcion != 0);
     }
 
     /**
@@ -231,9 +427,7 @@ public class Main {
 
         System.out.println("\n--- ELIMINAR BUG ---");
 
-        int id = leerEntero(
-            "ID a eliminar: ", 1, Integer.MAX_VALUE
-        );
+        int id = leerEntero("ID a eliminar: ", 1, Integer.MAX_VALUE);
 
         boolean eliminado = gestor.eliminarPorID(id);
 
@@ -243,40 +437,13 @@ public class Main {
             System.out.println("No existe un bug con ese ID.");
         }
     }
-
+    
     /**
-     * Muestra los reportes registrados en el sistema.
-     *
-     * Obtiene una copia de la lista principal y presenta
-     * hasta treinta elementos para evitar una salida
-     * excesiva en la consola.
-     *
-     * Informa la cantidad total cuando existen más
-     * registros de los que se muestran.
+     * Muestra todos los reportes registrados, permitiendo
+     * continuar la impresión en bloques de 30 elementos.
      */
     private static void listarBugs() {
-
-        System.out.println("\n--- LISTADO DE BUGS ---");
-
-        List<Bug> bugs = gestor.listar();
-
-        if (bugs.isEmpty()) {
-            System.out.println("No hay bugs registrados.");
-            return;
-        }
-
-        int limite = Math.min(bugs.size(), 30);
-
-        for (int i = 0; i < limite; i++) {
-            mostrarBug(bugs.get(i));
-        }
-
-        if (bugs.size() > limite) {
-            System.out.println(
-                "Mostrando " + limite + " de " + bugs.size()
-                + " registros."
-            );
-        }
+        mostrarResultados("LISTADO DE BUGS", gestor.listar());
     }
 
     /**
@@ -284,9 +451,7 @@ public class Main {
      * de bugs almacenados actualmente.
      */
     private static void mostrarCantidad() {
-        System.out.println(
-            "Total de bugs registrados: " + gestor.cantidad()
-        );
+        System.out.println("Total de bugs registrados: " + gestor.cantidad());
     }
 
     /**
@@ -304,4 +469,165 @@ public class Main {
         System.out.println("Categoría: " + bug.getCategoria());
         System.out.println("Fecha: " + bug.getFecha());
     }
+
+    /**
+     * Permite ordenar los reportes según el atributo elegido.
+     *
+     * Selecciona internamente el algoritmo apropiado sin
+     * modificar el orden de almacenamiento del gestor.
+     */
+    private static void menuOrdenamientos() {
+
+        OrdenamientoInsertion insertion = new OrdenamientoInsertion();
+        OrdenamientoMerge merge = new OrdenamientoMerge();
+        OrdenamientoQuick quick = new OrdenamientoQuick();
+        OrdenamientoHeap heap = new OrdenamientoHeap();
+
+        int opcion;
+
+        do {
+            System.out.println("\n===== ORDENAR BUGS =====");
+            System.out.println("1. ID ascendente");
+            System.out.println("2. Prioridad ascendente");
+            System.out.println("3. Prioridad descendente");
+            System.out.println("4. Seguridad ascendente");
+            System.out.println("5. Seguridad descendente");
+            System.out.println("6. Fecha ascendente");
+            System.out.println("7. Fecha descendente");
+            System.out.println("8. Categoría A-Z");
+            System.out.println("9. Estado Z-A");
+            System.out.println("0. Regresar");
+
+            opcion = leerEntero("Selecciona: ", 0, 9);
+
+            if (opcion == 0) {
+                break;
+            }
+
+            ArrayList<Bug> lista = gestor.listar();
+            ArrayList<Bug> ordenados;
+            String criterio;
+
+            switch (opcion) {
+
+                case 1 -> {
+                    // Los IDs se registran de forma creciente.
+                    ordenados = lista;
+                    criterio = "ID ascendente";
+                }
+                case 2 -> {
+                    ordenados = lista.size() <= 2000
+                        ? insertion.ordenarMenor(lista)
+                        : merge.ordenarMenor(lista);
+                    criterio = "Prioridad ascendente";
+                }
+                case 3 -> {
+                    ordenados = merge.ordenarMayor(lista);
+                    criterio = "Prioridad descendente";
+                }
+                case 4 -> {
+                    ordenados = heap.ordenarMenor(lista);
+                    criterio = "Seguridad ascendente";
+                }
+                case 5 -> {
+                    ordenados = heap.ordenarMayor(lista);
+                    criterio = "Seguridad descendente";
+                }
+                case 6 -> {
+                    if (lista.size() > 5000) {
+                        System.out.println("Límite provisional de 5000 registros " +"para Quick Sort.");
+                        continue;
+                    }
+
+                    ordenados = quick.ordenarMenor(lista);
+                    criterio = "Fecha ascendente";
+                }
+                case 7 -> {
+                    if (lista.size() > 5000) {
+                        System.out.println("Límite provisional de 5000 registros " +"para Quick Sort.");
+                        continue;
+                    }
+
+                    ordenados = quick.ordenarMayor(lista);
+                    criterio = "Fecha descendente";
+                }
+
+                case 8 -> {
+                    ordenados = heap.ordenarString(lista);
+                    criterio = "Categoría A-Z";
+                }
+
+                case 9 -> {
+                    ordenados = lista.size() <= 2000
+                        ? insertion.ordenarString(lista)
+                        : merge.ordenarString(lista);
+                    criterio = "Estado Z-A";
+                }
+
+                default -> {
+                    continue;
+                }
+            }
+
+            mostrarResultados("Orden: " + criterio, ordenados);
+
+        } while (opcion != 0);
+    }
+    
+    /**
+     * Muestra los resultados en bloques de hasta 30 registros.
+     *
+     * Permite al usuario decidir si desea continuar mostrando
+     * los siguientes bloques hasta terminar la lista.
+     *
+     * @param descripcion criterio de búsqueda u ordenamiento.
+     * @param resultados lista de bugs que se desea mostrar.
+     */
+    private static void mostrarResultados(
+            String descripcion, List<Bug> resultados) {
+
+        System.out.println("\n--- " + descripcion + " ---");
+        System.out.println("Total de registros: " + resultados.size());
+
+        if (resultados.isEmpty()) {
+            System.out.println("No se encontraron registros.");
+            return;
+        }
+
+        int indice = 0;
+        final int TAMANO_BLOQUE = 30;
+
+        while (indice < resultados.size()) {
+
+            int fin = Math.min(
+                indice + TAMANO_BLOQUE,
+                resultados.size()
+            );
+
+            for (int i = indice; i < fin; i++) {
+                mostrarBug(resultados.get(i));
+            }
+
+            indice = fin;
+
+            System.out.println(
+                "\nMostrados " + indice + " de "
+                + resultados.size() + " registros."
+            );
+
+            if (indice < resultados.size()) {
+
+                int continuar = leerEntero(
+                    "¿Mostrar los siguientes 30? (1=Sí, 0=No): ",
+                    0, 1
+                );
+
+                if (continuar == 0) {
+                    System.out.println("Regresando al menú...");
+                    break;
+                }
+            }
+        }
+    }
+
 }
