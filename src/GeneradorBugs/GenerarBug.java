@@ -7,7 +7,7 @@ import java.util.Random;
 public class GenerarBug {
     private Random rand = new Random();
     private Bug bug;
-    public Bug crearBug(){
+    public Bug crearBug() {
         bug = new Bug(0,0,0,"","",LocalDate.now());
         String []arr1={"Resuelto","No resuelto"};
         String []arr2={"Interfaz","Seguridad","Logica","Rendimiento"};

@@ -10,7 +10,7 @@ public class Bug {
     private String categoria;
     private LocalDate fecha;
 
-    public Bug(int ID, int prioridad, int nivelseguridad, String estado, String categoria,LocalDate fecha){
+    public Bug(int ID, int prioridad, int nivelseguridad, String estado, String categoria,LocalDate fecha) {
         this.ID=ID;
         this.prioridad=prioridad;
         this.nivelSeguridad=nivelseguridad;

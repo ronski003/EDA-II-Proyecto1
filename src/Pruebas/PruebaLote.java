@@ -13,10 +13,7 @@ public class PruebaLote {
         ArrayList<Bug> lote = new ArrayList<>();
 
         for (int i = 0; i < 200; i++) {
-            lote.add(new Bug(
-                0, 3, 5, "No resuelto",
-                "Seguridad", LocalDate.of(2026, 10, 25)
-            ));
+            lote.add(new Bug(0, 3, 5, "No resuelto", "Seguridad", LocalDate.of(2026, 10, 25)));
         }
 
         int registrados = gestor.agregarLote(lote);
@@ -29,9 +26,7 @@ public class PruebaLote {
             Bug encontrado = gestor.buscarPorID(id);
 
             if (encontrado == null || encontrado.getID() != id) {
-                throw new AssertionError(
-                    "No se encontró el ID " + id
-                );
+                throw new AssertionError("No se encontró el ID " + id);
             }
         }
 

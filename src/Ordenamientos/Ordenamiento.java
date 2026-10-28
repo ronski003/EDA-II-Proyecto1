@@ -29,6 +29,5 @@ public interface Ordenamiento {
     public abstract ArrayList<Bug> ordenarString(ArrayList<Bug> lista);
 
 
-    
 }
 

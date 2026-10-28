@@ -29,7 +29,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
         mergesort(temporal, inicio, fin);
         return temporal;
 
-    }    
+    }
 
     /**
      * Metodo que implementa el algoritmo mergesort mayor a menor con valores enteros
@@ -37,10 +37,10 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param izq primer indice de la lista
      * @param der ultimo indice de la lista
      */
-    private void mergesort(ArrayList<Bug> lista, int izq,int der){
-        if (izq<der){
-            int mitad=(izq+der)/2; 
-            
+    private void mergesort(ArrayList<Bug> lista, int izq,int der) {
+        if (izq<der) {
+            int mitad=(izq+der)/2;
+
             mergesort(lista, izq,mitad);
             mergesort(lista, mitad+1, der);
 
@@ -55,7 +55,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param mitad indice del elemento a la mita de la lista
      * @param der indice del ultimo elemento de la lista
      */
-    private void merge(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void merge(ArrayList<Bug> lista,int izq, int mitad, int der) {
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
@@ -70,12 +70,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
         int i = 0, j = 0;
         int k = izq;
 
-        while(i<n1 && j<n2){
-            if(arrizq.get(i).getPrioridad()>=arrder.get(j).getPrioridad()){
+        while (i<n1 && j<n2) {
+            if (arrizq.get(i).getPrioridad()>=arrder.get(j).getPrioridad()) {
                 lista.set(k,arrizq.get(i));
                 i++;
             }
-            else{
+            else {
                 lista.set(k,arrder.get(j));
                 j++;
             }
@@ -119,10 +119,10 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param izq primer indice de la lista
      * @param der ultimo indice de la lista
      */
-    private void mergesortMenor(ArrayList<Bug> lista, int izq,int der){
-        if (izq<der){
-            int mitad=(izq+der)/2; 
-            
+    private void mergesortMenor(ArrayList<Bug> lista, int izq,int der) {
+        if (izq<der) {
+            int mitad=(izq+der)/2;
+
             mergesortMenor(lista, izq,mitad);
             mergesortMenor(lista, mitad+1, der);
 
@@ -137,7 +137,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param mitad indice del elemento a la mita de la lista
      * @param der indice del ultimo elemento de la lista
      */
-    private void mergeMenor(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void mergeMenor(ArrayList<Bug> lista,int izq, int mitad, int der) {
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
@@ -152,12 +152,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
         int i = 0, j = 0;
         int k = izq;
 
-        while(i<n1 && j<n2){
-            if(arrizq.get(i).getPrioridad()<=arrder.get(j).getPrioridad()){//importante
+        while (i<n1 && j<n2) {
+            if (arrizq.get(i).getPrioridad()<=arrder.get(j).getPrioridad()) {//importante
                 lista.set(k,arrizq.get(i));
                 i++;
             }
-            else{
+            else {
                 lista.set(k,arrder.get(j));
                 j++;
             }
@@ -200,10 +200,10 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param izq primer indice de la lista
      * @param der ultimo indice de la lista
      */
-    private void mergesortString(ArrayList<Bug> lista, int izq,int der){
-        if (izq<der){
-            int mitad=(izq+der)/2; 
-            
+    private void mergesortString(ArrayList<Bug> lista, int izq,int der) {
+        if (izq<der) {
+            int mitad=(izq+der)/2;
+
             mergesortString(lista, izq,mitad);
             mergesortString(lista, mitad+1, der);
 
@@ -218,7 +218,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
      * @param mitad indice del elemento a la mita de la lista
      * @param der indice del ultimo elemento de la lista
      */
-    private void mergeString(ArrayList<Bug> lista,int izq, int mitad, int der){
+    private void mergeString(ArrayList<Bug> lista,int izq, int mitad, int der) {
         int n1=mitad-izq+1;
         int n2= der-mitad;
 
@@ -233,12 +233,12 @@ public class OrdenamientoMerge implements  Ordenamiento {
         int i = 0, j = 0;
         int k = izq;
 
-        while(i<n1 && j<n2){
-            if(arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())>=0){//lo importante jaja
+        while (i<n1 && j<n2) {
+            if (arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())>=0) {//lo importante jaja
                 lista.set(k,arrizq.get(i));
                 i++;
             }
-            else{
+            else {
                 lista.set(k,arrder.get(j));
                 j++;
             }
@@ -258,7 +258,6 @@ public class OrdenamientoMerge implements  Ordenamiento {
 
 
     }
-    
-   
+
 
 }

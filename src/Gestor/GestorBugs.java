@@ -28,7 +28,6 @@ public class GestorBugs {
     private GeneradorID generadorID;
 
 
-
     /**
      * Inicializa las estructuras necesarias para administrar
      * los reportes de bugs.
@@ -69,14 +68,7 @@ public class GestorBugs {
 
         // Creamos un nuevo objeto para no alterar
         // el ID provisional del objeto recibido.
-        Bug nuevo = new Bug(
-            id,
-            datos.getPrioridad(),
-            datos.getNivelSeguridad(),
-            datos.getEstado(),
-            datos.getCategoria(),
-            datos.getFecha()
-        );
+        Bug nuevo = new Bug(id, datos.getPrioridad(), datos.getNivelSeguridad(), datos.getEstado(), datos.getCategoria(), datos.getFecha());
 
         if (!tablaHash.insertar(nuevo)) {
             throw new IllegalStateException("No se pudo registrar el bug");
@@ -126,9 +118,7 @@ public class GestorBugs {
             }
         }
 
-        throw new IllegalStateException(
-            "Inconsistencia entre lista y tabla hash"
-        );
+        throw new IllegalStateException("Inconsistencia entre lista y tabla hash");
     }
 
     /**

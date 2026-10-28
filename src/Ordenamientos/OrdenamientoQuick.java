@@ -14,7 +14,7 @@ public class OrdenamientoQuick implements  Ordenamiento{
     public OrdenamientoQuick() {
     }
 
-    
+
     //Ordenar con Quick de mayor a menor la fecha
     /**    (non-Javadoc)
      * Metodo que ordena de mayor a menor bugs de acuerdo al atributo fechas
@@ -34,8 +34,8 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param low   indice del inidio de la lista
      * @param high indice del final de la lista
      */
-    private void QuickSortMayor(ArrayList<Bug> lista,int low, int high){
-        if(low<high){
+    private void QuickSortMayor(ArrayList<Bug> lista,int low, int high) {
+        if (low<high) {
             int pi=partitionMayor(lista, low, high);
             QuickSortMayor(lista, low, pi-1);
             QuickSortMayor(lista, pi+1, high);
@@ -49,11 +49,11 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param high indice del final de la lista
      * @return retorna el indice de donde se encuentra el pivote
      */
-    private int partitionMayor (ArrayList<Bug> listaAux,int low, int high){
+    private int partitionMayor (ArrayList<Bug> listaAux,int low, int high) {
         LocalDate pivot = listaAux.get(high).getFecha();
         int j,i =(low-1);
-        for(j = low;j<=high-1;j++){
-            if(listaAux.get(j).getFecha().compareTo(pivot)>0){
+        for (j = low;j<=high-1;j++) {
+            if (listaAux.get(j).getFecha().compareTo(pivot)>0) {
                 i++;
                 swap(listaAux,i,j);
             }
@@ -68,14 +68,14 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param i indice de un bug
      * @param j indice de otro bug
      */
-     private void swap(ArrayList<Bug> listaAux,int i,int j){
+     private void swap(ArrayList<Bug> listaAux,int i,int j) {
         Bug t =listaAux.get(i);
         listaAux.set(i, listaAux.get(j));
         listaAux.set(j, t);
     }
 
 /*****************************************************************************************************************/
-    
+
     /**    (non-Javadoc)
      * Metodo que ordena con Quick de menor a mayor la fecha
      * @see Ordenamientos.Ordenamiento#ordenarMenor(java.util.ArrayList)
@@ -94,8 +94,8 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param low   indice del inidio de la lista
      * @param high indice del final de la lista
      */
-     private void QuickSortMenor(ArrayList<Bug> lista,int low, int high){
-        if(low<high){
+     private void QuickSortMenor(ArrayList<Bug> lista,int low, int high) {
+        if (low<high) {
             int pi=partitionMenor(lista, low, high);
             QuickSortMenor(lista, low, pi-1);
             QuickSortMenor(lista, pi+1, high);
@@ -108,11 +108,11 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param high indice del final de la lista
      * @return retorna el indice de donde se encuentra el pivote
      */
-     private int partitionMenor (ArrayList<Bug> listaAux,int low, int high){
+     private int partitionMenor (ArrayList<Bug> listaAux,int low, int high) {
         LocalDate pivot = listaAux.get(high).getFecha();
         int j,i =(low-1);
-        for(j = low;j<=high-1;j++){
-            if(listaAux.get(j).getFecha().compareTo(pivot)<0){
+        for (j = low;j<=high-1;j++) {
+            if (listaAux.get(j).getFecha().compareTo(pivot)<0) {
                 i++;
                 swap(listaAux,i,j);
             }
@@ -122,9 +122,7 @@ public class OrdenamientoQuick implements  Ordenamiento{
     }
 
 
-
-
-/*****************************************************************************************************************/    
+/*****************************************************************************************************************/
     //Ordenar con Quick la categoria
     /**    (non-Javadoc)
      * Metodo que ordena bugs por la categoria de menor a mayor
@@ -144,8 +142,8 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param low   indice del inidio de la lista
      * @param high indice del final de la lista
      */
-     private void QuickSortString(ArrayList<Bug> lista,int low, int high){
-        if(low<high){
+     private void QuickSortString(ArrayList<Bug> lista,int low, int high) {
+        if (low<high) {
             int pi=partitionString(lista, low, high);
             QuickSortString(lista, low, pi-1);
             QuickSortString(lista, pi+1, high);
@@ -159,11 +157,11 @@ public class OrdenamientoQuick implements  Ordenamiento{
      * @param high indice del final de la lista
      * @return retorna el indice de donde se encuentra el pivote
      */
-     private int partitionString(ArrayList<Bug> listaAux,int low, int high){
+     private int partitionString(ArrayList<Bug> listaAux,int low, int high) {
         String pivot = listaAux.get(high).getCategoria();
         int j,i =(low-1);
-        for(j = low;j<=high-1;j++){
-            if(listaAux.get(j).getCategoria().compareTo(pivot)<0){
+        for (j = low;j<=high-1;j++) {
+            if (listaAux.get(j).getCategoria().compareTo(pivot)<0) {
                 i++;
                 swap(listaAux,i,j);
             }

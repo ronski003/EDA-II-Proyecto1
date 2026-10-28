@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * BusquedaLineal
  */
 public class BusquedaLineal {
-    
+
     /**************************************************************************************************************************************** */
     /**
      * Busqueda Lineal para la prioridad ordenada con Merge
@@ -17,37 +17,37 @@ public class BusquedaLineal {
      * @param prioridad Prioridad a buscar
      * @return la lista de los elementos encontrados
      */
-    public ArrayList<Bug> BusquedaLinealPrioridad(ArrayList<Bug> listaBugs, int prioridad){
-       if(listaBugs.isEmpty())
+    public ArrayList<Bug> BusquedaLinealPrioridad(ArrayList<Bug> listaBugs, int prioridad) {
+       if (listaBugs.isEmpty())
         {
             System.out.println("La lista esta vacía");
             return listaBugs;
         }
         ArrayList <Bug> encontrados= new ArrayList<>();
         for (Bug bug : listaBugs) {
-            if(bug.getPrioridad()==prioridad){
+            if (bug.getPrioridad()==prioridad) {
                 encontrados.add(bug);
             }
         }
         return encontrados;
     }
     /*************************************************************************************************************************************************** */
-    
+
     /**
      * Busqueda Lineal para el estado ordenado con Insertion
      * @param listaBugs Lista de bugs
      * @param estado estado de bug a buscar
      * @return la lista de los elementos encontrados
      */
-    public ArrayList<Bug> BusquedaLinealEstado(ArrayList<Bug> listaBugs, String estado){
-       if(listaBugs.isEmpty())
+    public ArrayList<Bug> BusquedaLinealEstado(ArrayList<Bug> listaBugs, String estado) {
+       if (listaBugs.isEmpty())
         {
             System.out.println("La lista esta vacía");
             return listaBugs;
         }
         ArrayList <Bug> encontrados= new ArrayList<>();
         for (Bug bug : listaBugs) {
-            if(bug.getEstado().equals(estado)){
+            if (bug.getEstado().equals(estado)) {
                 encontrados.add(bug);
             }
         }

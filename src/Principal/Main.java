@@ -48,9 +48,7 @@ public class Main {
             gestor.agregar(generador.crearBug());
         }
 
-        System.out.println(
-            "Sistema inicializado con " + gestor.cantidad() + " bugs."
-        );
+        System.out.println("Sistema inicializado con " + gestor.cantidad() + " bugs.");
 
         int opcion;
 
@@ -100,8 +98,7 @@ public class Main {
      * @param maximo valor máximo permitido, inclusive.
      * @return número entero válido introducido por el usuario.
      */
-    private static int leerEntero(
-            String mensaje, int minimo, int maximo) {
+    private static int leerEntero(String mensaje, int minimo, int maximo) {
 
         while (true) {
             System.out.print(mensaje);
@@ -121,7 +118,7 @@ public class Main {
             System.out.println("Entrada inválida. Intenta otra vez.");
         }
     }
-    
+
     /**
      * Solicita una cadena de texto no vacía.
      *
@@ -245,16 +242,9 @@ public class Main {
 
         int cantidad = cantidades[opcion - 1];
 
-        System.out.println(
-            "\nSe agregarán " + cantidad
-            + " bugs a los " + gestor.cantidad()
-            + " existentes."
-        );
+        System.out.println("\nSe agregarán " + cantidad + " bugs a los " + gestor.cantidad() + " existentes.");
 
-        int confirmar = leerEntero(
-            "¿Confirmar generación? (1=Sí, 0=No): ",
-            0, 1
-        );
+        int confirmar = leerEntero("¿Confirmar generación? (1=Sí, 0=No): ", 0, 1);
 
         if (confirmar == 0) {
             System.out.println("Operación cancelada.");
@@ -346,8 +336,7 @@ public class Main {
                 }
 
                 case 4 -> {
-                    int seguridad = leerEntero(
-                        "Nivel de seguridad (1-5): ", 1, 5);
+                    int seguridad = leerEntero("Nivel de seguridad (1-5): ", 1, 5);
 
                     resultados =
                         binaria.busquedaBinariaNivelSeguridad(lista, seguridad);
@@ -429,7 +418,7 @@ public class Main {
             System.out.println("No existe un bug con ese ID.");
         }
     }
-    
+
     /**
      * Muestra todos los reportes registrados, permitiendo
      * continuar la impresión en bloques de 30 elementos.
@@ -554,7 +543,7 @@ public class Main {
 
         } while (opcion != 0);
     }
-    
+
     /**
      * Muestra los resultados en bloques de hasta 30 registros.
      *
@@ -564,8 +553,7 @@ public class Main {
      * @param descripcion criterio de búsqueda u ordenamiento.
      * @param resultados lista de bugs que se desea mostrar.
      */
-    private static void mostrarResultados(
-            String descripcion, List<Bug> resultados) {
+    private static void mostrarResultados(String descripcion, List<Bug> resultados) {
 
         System.out.println("\n--- " + descripcion + " ---");
         System.out.println("Total de registros: " + resultados.size());
@@ -580,10 +568,7 @@ public class Main {
 
         while (indice < resultados.size()) {
 
-            int fin = Math.min(
-                indice + TAMANO_BLOQUE,
-                resultados.size()
-            );
+            int fin = Math.min(indice + TAMANO_BLOQUE, resultados.size());
 
             for (int i = indice; i < fin; i++) {
                 mostrarBug(resultados.get(i));
@@ -591,17 +576,11 @@ public class Main {
 
             indice = fin;
 
-            System.out.println(
-                "\nMostrados " + indice + " de "
-                + resultados.size() + " registros."
-            );
+            System.out.println("\nMostrados " + indice + " de " + resultados.size() + " registros.");
 
             if (indice < resultados.size()) {
 
-                int continuar = leerEntero(
-                    "¿Mostrar los siguientes 30? (1=Sí, 0=No): ",
-                    0, 1
-                );
+                int continuar = leerEntero("¿Mostrar los siguientes 30? (1=Sí, 0=No): ", 0, 1);
 
                 if (continuar == 0) {
                     System.out.println("Regresando al menú...");
