@@ -79,7 +79,7 @@ public class BusquedaBinaria {
 //Busqueda Binaria para la categoria ordenando con quick
 
 public ArrayList<Bug> BusquedaBinariaCategoria(ArrayList<Bug> listaBugs,String categoria){
-    OrdenamientoQuick ordenamiento = new OrdenamientoQuick();
+    OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
     ArrayList<Bug> listaAux1 = ordenamiento.ordenarString(listaBugs);
     ArrayList<Bug> listaAux2 = new ArrayList<>();
      int izq=0, der=listaAux1.size()-1;
