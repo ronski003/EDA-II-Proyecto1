@@ -2,7 +2,6 @@ package Busquedas;
 
 import Bug.Bug;
 import Ordenamientos.OrdenamientoHeap;
-import Ordenamientos.OrdenamientoQuick;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -10,10 +9,10 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-//Busqueda Binaria para la fecha ordenando con quick
+//Busqueda Binaria para la fecha ordenando con heap(pendiente)
     public ArrayList<Bug> BusquedaBinariaFecha(ArrayList<Bug> listaBugs,LocalDate fecha){
-        OrdenamientoQuick ordenamiento = new OrdenamientoQuick();
-        ArrayList<Bug> listaAux1 = ordenamiento.ordenarMenor(listaBugs);
+        OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
+        ArrayList<Bug> listaAux1 = ordenamiento.ordenarFechaMenor(listaBugs);
         ArrayList<Bug> listaAux2 = new ArrayList<>();
         int izq=0, der=listaAux1.size()-1;
         while(izq <= der){
@@ -76,7 +75,7 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-//Busqueda Binaria para la categoria ordenando con quick
+//Busqueda Binaria para la categoria ordenando con heap
 
 public ArrayList<Bug> BusquedaBinariaCategoria(ArrayList<Bug> listaBugs,String categoria){
     OrdenamientoHeap ordenamiento = new OrdenamientoHeap();

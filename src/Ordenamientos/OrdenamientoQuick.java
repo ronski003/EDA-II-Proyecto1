@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
-public class OrdenamientoQuick extends Ordenamiento{
+public class OrdenamientoQuick implements Ordenamiento{
 
 
     

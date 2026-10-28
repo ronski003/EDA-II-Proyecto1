@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 
-public class OrdenamientoHeap extends Ordenamiento{
+public class OrdenamientoHeap implements  Ordenamiento{
 
     public OrdenamientoHeap() {
     }
@@ -105,7 +105,7 @@ public class OrdenamientoHeap extends Ordenamiento{
     }
 /***************************************************************************************************************************/
     //Heap para categoria tipo String
-    @Override
+    @Override 
     public ArrayList<Bug> ordenarString(ArrayList<Bug> lista) {
         ArrayList<Bug> listaFinal = new ArrayList<>(lista);
         int tamañoHeap=listaFinal.size()-1, tamaño=listaFinal.size();
@@ -147,3 +147,90 @@ public class OrdenamientoHeap extends Ordenamiento{
             HeapifyString(listaAux, largest, tamañoHeap);
         }
     }   
+/*************************************************************************************************************************************/
+//Implemente otros metodos que no son de la interface para ordenar la fecha con heap dado que fallo quick. 
+
+//Mayor a menor fecha
+    public ArrayList<Bug> ordenarFechaMayor(ArrayList<Bug> listaBugs){
+        ArrayList<Bug> listaFinal= new ArrayList<>(listaBugs);
+        int tamañoHeap=listaFinal.size()-1, tamaño=listaFinal.size();
+        BuildHeapMayorFecha(listaFinal, tamaño);
+        for (int i=listaFinal.size()-1;i>0;i--)
+            {
+            swap(listaFinal,0,tamañoHeap);
+            tamañoHeap--;
+            HeapifyMayorFecha(listaFinal, 0, tamañoHeap);
+        }
+        return listaFinal;
+    }
+
+     private void BuildHeapMayorFecha(ArrayList<Bug> listaAux,int size){
+        int tamañoHeap=size-1;
+        for (int i = (size-1)/2;i>=0;i--){
+            HeapifyMayorFecha(listaAux, i, tamañoHeap);
+        }
+    }
+
+     private void HeapifyMayorFecha(ArrayList<Bug> listaAux,int i,int tamañoHeap){
+        int l=2*i+1;
+        int r=2*i+2;
+        int smallest;
+
+        if (l<=tamañoHeap && listaAux.get(l).getFecha().compareTo(listaAux.get(i).getFecha())<0){
+            smallest=l;
+        }
+        else{
+            smallest=i;
+        }
+        if(r<=tamañoHeap && listaAux.get(r).getFecha().compareTo(listaAux.get(smallest).getFecha())<0){
+            smallest=r;
+        }
+        if(smallest!=i){
+            swap(listaAux,i,smallest);
+            HeapifyMayorFecha(listaAux, smallest, tamañoHeap);
+        }
+    }   
+
+
+/*******************************************************************************************************************************************************************************************************/
+//Menor a mayor
+    public ArrayList<Bug> ordenarFechaMenor(ArrayList<Bug> listaBugs){
+        ArrayList<Bug> listaFinal= new ArrayList<>(listaBugs);
+        int tamañoHeap=listaFinal.size()-1, tamaño=listaFinal.size();
+        BuildHeapMenorFecha(listaFinal, tamaño);
+        for (int i=listaFinal.size()-1;i>0;i--)
+            {
+            swap(listaFinal,0,tamañoHeap);
+            tamañoHeap--;
+            HeapifyMenorFecha(listaFinal, 0, tamañoHeap);
+        }
+        return listaFinal;
+    }
+
+     private void BuildHeapMenorFecha(ArrayList<Bug> listaAux,int size){
+        int tamañoHeap=size-1;
+        for (int i = (size-1)/2;i>=0;i--){
+            HeapifyMenorFecha(listaAux, i, tamañoHeap);
+        }
+    }
+
+     private void HeapifyMenorFecha(ArrayList<Bug> listaAux,int i,int tamañoHeap){
+        int l=2*i+1;
+        int r=2*i+2;
+        int largest;
+
+        if (l<=tamañoHeap && listaAux.get(l).getFecha().compareTo(listaAux.get(i).getFecha())>0){
+            largest=l;
+        }
+        else{
+            largest=i;
+        }
+        if(r<=tamañoHeap && listaAux.get(r).getFecha().compareTo(listaAux.get(largest).getFecha())>0){
+            largest=r;
+        }
+        if(largest!=i){
+            swap(listaAux,i,largest);
+            HeapifyMenorFecha(listaAux, largest, tamañoHeap);
+        }
+    }   
+}
