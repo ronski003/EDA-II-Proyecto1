@@ -2,27 +2,17 @@ package Busquedas;
 
 import Bug.Bug;
 import Ordenamientos.OrdenamientoHeap;
-import Ordenamientos.OrdenamientoQuick;
 import java.time.LocalDate;
 import java.util.ArrayList;
-/**
- * @author Equipo 10
- * Clase para la busqueda binaria de los atributos fecha nivel de seguridad y categoria
- * BusquedaBinaria
- */
+
 public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-    /**
-     * Busqueda Binaria para la fecha ordenando con quick
-     * @param listaBugs Lista de bugs
-     * @param fecha fecha por la que se buscara incidentes
-     * @return la lista de los elementos encontrados
-     */
+//Busqueda Binaria para la fecha ordenando con heap(pendiente)
     public ArrayList<Bug> BusquedaBinariaFecha(ArrayList<Bug> listaBugs,LocalDate fecha){
-        OrdenamientoQuick ordenamiento = new OrdenamientoQuick();
-        ArrayList<Bug> listaAux1 = ordenamiento.ordenarMenor(listaBugs);
+        OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
+        ArrayList<Bug> listaAux1 = ordenamiento.ordenarFechaMenor(listaBugs);
         ArrayList<Bug> listaAux2 = new ArrayList<>();
         int izq=0, der=listaAux1.size()-1;
         while(izq <= der){
@@ -31,7 +21,7 @@ public class BusquedaBinaria {
                 listaAux2.add(listaAux1.get(medio));
                 int j=medio-1,k=medio+1;
                 while(j>=0 && fecha.compareTo(listaAux1.get(j).getFecha())==0){
-                    listaAux2.addFirst(listaAux1.get(j));
+                    listaAux2.add(listaAux1.get(j));
                     j--;
                 }
                 while(k<listaAux1.size() && fecha.compareTo(listaAux1.get(k).getFecha())==0){
@@ -52,12 +42,7 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
     
-    /**
-     * Busqueda Binaria para el nivel de seguridad ordenando con heap
-     * @param listaBugs lista de bugs
-     * @param nivelSeguridad nivel de seguridad a buscar
-     * @return la lista de los elementos encontrados
-     */
+//Busqueda Binaria para el nivel de seguridad ordenando con heap
     public ArrayList<Bug> busquedaBinariaNivelSeguridad(ArrayList<Bug> listaBugs,int nivelSeguridad){
         OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
         ArrayList<Bug> listaAux1 = ordenamiento.ordenarMenor(listaBugs);
@@ -69,7 +54,7 @@ public class BusquedaBinaria {
                 listaAux2.add(listaAux1.get(medio));
                 int j=medio-1,k=medio+1;
                 while(j>=0 && nivelSeguridad==listaAux1.get(j).getNivelSeguridad()){
-                    listaAux2.addFirst(listaAux1.get(j));
+                    listaAux2.add(listaAux1.get(j));
                     j--;
                 }
                 while(k<listaAux1.size() && nivelSeguridad==listaAux1.get(k).getNivelSeguridad()){
@@ -90,15 +75,10 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-    /**
-     * Busqueda Binaria para la categoria ordenando con quick
-     * @param listaBugs lista de bugs
-     * @param categoria categoria a buscar
-     * @return la lista de los elementos encontrados
-     */
+//Busqueda Binaria para la categoria ordenando con heap
 
 public ArrayList<Bug> BusquedaBinariaCategoria(ArrayList<Bug> listaBugs,String categoria){
-    OrdenamientoQuick ordenamiento = new OrdenamientoQuick();
+    OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
     ArrayList<Bug> listaAux1 = ordenamiento.ordenarString(listaBugs);
     ArrayList<Bug> listaAux2 = new ArrayList<>();
      int izq=0, der=listaAux1.size()-1;
@@ -108,7 +88,7 @@ public ArrayList<Bug> BusquedaBinariaCategoria(ArrayList<Bug> listaBugs,String c
                 listaAux2.add(listaAux1.get(medio));
                 int j=medio-1,k=medio+1;
                 while(j>=0 && categoria.compareToIgnoreCase(listaAux1.get(j).getCategoria())==0){
-                    listaAux2.addFirst(listaAux1.get(j));
+                    listaAux2.add(listaAux1.get(j));
                     j--;
                 }
                 while(k<listaAux1.size() && categoria.compareToIgnoreCase(listaAux1.get(k).getCategoria())==0){

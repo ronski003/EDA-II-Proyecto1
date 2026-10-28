@@ -234,7 +234,7 @@ public class OrdenamientoMerge implements  Ordenamiento {
         int k = izq;
 
         while(i<n1 && j<n2){
-            if(arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())<=0){//lo importante jaja
+            if(arrizq.get(i).getEstado().compareTo(arrder.get(j).getEstado())>=0){//lo importante jaja
                 lista.set(k,arrizq.get(i));
                 i++;
             }

@@ -1,20 +1,20 @@
-
 package Pruebas;
 
 import Bug.Bug;
+import Busquedas.BusquedaBinaria;
 import GeneradorBugs.GenerarBug;
 import Gestor.GestorBugs;
-import Ordenamientos.OrdenamientoMerge;
 import Ordenamientos.OrdenamientoHeap;
 import Ordenamientos.OrdenamientoInsertion;
-
+import Ordenamientos.OrdenamientoMerge;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PruebaIntegracion {
 
     public static void main(String[] args) {
 
-        int cantidad = 10000;
+        int cantidad = 100000;
         GestorBugs gestor = new GestorBugs();
         GenerarBug generador = new GenerarBug();
         for (int i = 0; i < cantidad; i++) {
@@ -80,6 +80,78 @@ public class PruebaIntegracion {
         }
 
         System.out.println("Logrado: Integridad");
+
+        // Verificar fechas ascendentes y descendentes
+        ArrayList<Bug> fechasAsc = heap.ordenarFechaMenor(original);
+        ArrayList<Bug> fechasDesc = heap.ordenarFechaMayor(original);
+
+        for (int i = 1; i < cantidad; i++) {
+            verificar(fechasAsc.get(i - 1).getFecha().compareTo(fechasAsc.get(i).getFecha()) <= 0,"Heap fecha ascendente");
+            verificar(fechasDesc.get(i - 1).getFecha().compareTo(fechasDesc.get(i).getFecha()) >= 0,"Heap fecha descendente");
+        }
+
+        System.out.println("Logrado: Heap fechas");
+
+        // Verificar búsqueda binaria por categoría
+        BusquedaBinaria binaria = new BusquedaBinaria();
+
+        String[] categoriasPrueba = {"Interfaz", "Seguridad", "Logica", "Rendimiento"};
+
+        int totalCategorias = 0;
+
+        for (String categoria : categoriasPrueba) {
+            ArrayList<Bug> encontrados = binaria.BusquedaBinariaCategoria(original, categoria);
+
+            for (Bug bug : encontrados) {
+                verificar(bug.getCategoria().equalsIgnoreCase(categoria),"Categoría incorrecta");
+            }
+
+            totalCategorias += encontrados.size();
+        }
+
+        verificar(totalCategorias == cantidad,"Suma de categorías");
+
+        System.out.println("Logrado: Búsqueda por categoría");
+
+        // Verificar búsqueda binaria por seguridad
+        int totalSeguridad = 0;
+
+        for (int nivel = 1; nivel <= 5; nivel++) {
+            ArrayList<Bug> encontrados =
+                binaria.busquedaBinariaNivelSeguridad(original, nivel);
+
+            for (Bug bug : encontrados) {
+                verificar(bug.getNivelSeguridad() == nivel,"Seguridad incorrecta");
+            }
+
+            totalSeguridad += encontrados.size();
+        }
+
+        verificar(totalSeguridad == cantidad, "Suma de niveles de seguridad");
+
+        System.out.println("Logrado: Búsqueda por seguridad");
+
+        // Verificar búsqueda por una fecha existente
+        LocalDate fechaPrueba = original.get(0).getFecha();
+
+        int esperados = 0;
+
+        for (Bug bug : original) {
+            if (bug.getFecha().equals(fechaPrueba)) {
+                esperados++;
+            }
+        }
+
+        ArrayList<Bug> encontradosFecha =
+            binaria.BusquedaBinariaFecha(original, fechaPrueba);
+
+        verificar(encontradosFecha.size() == esperados, "Cantidad de coincidencias por fecha");
+
+        for (Bug bug : encontradosFecha) {
+            verificar(bug.getFecha().equals(fechaPrueba),"Fecha incorrecta");
+        }
+
+        System.out.println("Logrado: Búsqueda por fecha");
 
         System.out.println("\nPruebas completadas");
     }

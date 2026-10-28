@@ -8,7 +8,6 @@ import Gestor.GestorBugs;
 import Ordenamientos.OrdenamientoHeap;
 import Ordenamientos.OrdenamientoInsertion;
 import Ordenamientos.OrdenamientoMerge;
-import Ordenamientos.OrdenamientoQuick;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -377,14 +376,7 @@ public class Main {
                 case 6 -> {
                     LocalDate fecha = leerFecha();
 
-                    if (lista.size() > 5000) {
-                        System.out.println("La búsqueda binaria por fecha está "+ "limitada provisionalmente a 5000 "+ "registros por el Quick Sort actual.");
-                        break;
-                    }
-
-                    resultados = binaria.BusquedaBinariaFecha(
-                        lista, fecha
-                    );
+                    resultados = binaria.BusquedaBinariaFecha(lista, fecha);
 
                     mostrarResultados("Fecha: " + fecha,resultados);
                 }
@@ -480,7 +472,6 @@ public class Main {
 
         OrdenamientoInsertion insertion = new OrdenamientoInsertion();
         OrdenamientoMerge merge = new OrdenamientoMerge();
-        OrdenamientoQuick quick = new OrdenamientoQuick();
         OrdenamientoHeap heap = new OrdenamientoHeap();
 
         int opcion;
@@ -534,21 +525,11 @@ public class Main {
                     criterio = "Seguridad descendente";
                 }
                 case 6 -> {
-                    if (lista.size() > 5000) {
-                        System.out.println("Límite provisional de 5000 registros " +"para Quick Sort.");
-                        continue;
-                    }
-
-                    ordenados = quick.ordenarMenor(lista);
+                    ordenados = heap.ordenarFechaMenor(lista);
                     criterio = "Fecha ascendente";
                 }
                 case 7 -> {
-                    if (lista.size() > 5000) {
-                        System.out.println("Límite provisional de 5000 registros " +"para Quick Sort.");
-                        continue;
-                    }
-
-                    ordenados = quick.ordenarMayor(lista);
+                    ordenados = heap.ordenarFechaMayor(lista);
                     criterio = "Fecha descendente";
                 }
 
