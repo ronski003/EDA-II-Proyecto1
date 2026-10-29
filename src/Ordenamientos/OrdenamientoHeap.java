@@ -9,7 +9,9 @@ import java.util.ArrayList;
  * OrdenamientoHeap
  */
 public class OrdenamientoHeap implements  Ordenamiento{
-
+    /**
+    *Costructor de OrdenamientoHeap
+    */    
     public OrdenamientoHeap() {
     }
 
