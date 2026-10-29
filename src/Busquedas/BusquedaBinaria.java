@@ -4,12 +4,22 @@ import Bug.Bug;
 import Ordenamientos.OrdenamientoHeap;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * @author Equipo 10
+ * Clase para la busqueda binaria de los atributos fecha nivel de seguridad y categoria
+ * BusquedaBinaria
+ */
 public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-//Busqueda Binaria para la fecha ordenando con heap(pendiente)
+    /**
+     * Busqueda Binaria para la fecha ordenando con quick
+     * @param listaBugs Lista de bugs
+     * @param fecha fecha por la que se buscara incidentes
+     * @return la lista de los elementos encontrados
+     */
+
     public ArrayList<Bug> BusquedaBinariaFecha(ArrayList<Bug> listaBugs,LocalDate fecha) {
         OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
         ArrayList<Bug> listaAux1 = ordenamiento.ordenarFechaMenor(listaBugs);
@@ -42,7 +52,12 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-//Busqueda Binaria para el nivel de seguridad ordenando con heap
+    /**
+     * Busqueda Binaria para el nivel de seguridad ordenando con heap
+     * @param listaBugs lista de bugs
+     * @param nivelSeguridad nivel de seguridad a buscar
+     * @return la lista de los elementos encontrados
+     */
     public ArrayList<Bug> busquedaBinariaNivelSeguridad(ArrayList<Bug> listaBugs,int nivelSeguridad) {
         OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
         ArrayList<Bug> listaAux1 = ordenamiento.ordenarMenor(listaBugs);
@@ -75,7 +90,12 @@ public class BusquedaBinaria {
 
 /*********************************************************************************************************************/
 
-//Busqueda Binaria para la categoria ordenando con heap
+    /**
+     * Busqueda Binaria para la categoria ordenando con quick
+     * @param listaBugs lista de bugs
+     * @param categoria categoria a buscar
+     * @return la lista de los elementos encontrados
+     */
 
 public ArrayList<Bug> BusquedaBinariaCategoria(ArrayList<Bug> listaBugs,String categoria) {
     OrdenamientoHeap ordenamiento = new OrdenamientoHeap();
