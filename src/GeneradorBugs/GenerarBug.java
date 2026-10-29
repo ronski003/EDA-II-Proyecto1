@@ -3,10 +3,18 @@ package GeneradorBugs;
 import Bug.Bug;
 import java.time.LocalDate;
 import java.util.Random;
-
+/**
+ * @author Equipo 10
+ * Clase Generador de Bugs
+ * GenerarBug
+ */
 public class GenerarBug {
     private Random rand = new Random();
     private Bug bug;
+    /**
+     * Metodo para crear una instancia de Bug de forma aleatorea
+     * @return retorna la intancia creada de la clase bug
+     */
     public Bug crearBug() {
         bug = new Bug(0,0,0,"","",LocalDate.now());
         String []arr1={"Resuelto","No resuelto"};
