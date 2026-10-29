@@ -200,8 +200,8 @@ public class OrdenamientoHeap implements  Ordenamiento{
 //Implemente otros metodos que no son de la interface para ordenar la fecha con heap dado que fallo quick.
 /**    (non-Javadoc)
      * Heap para Mayor a menor fecha tipo LocalDate 
-     * @see Ordenamientos.Ordenamiento#ordenarString(java.util.ArrayList)
-     * @param lista Lista de bugs
+     * @param listaBugs Lista de bugs
+     * @return Lista de bugs ordenada por fecha
      */
     public ArrayList<Bug> ordenarFechaMayor(ArrayList<Bug> listaBugs) {
         ArrayList<Bug> listaFinal= new ArrayList<>(listaBugs);
@@ -257,8 +257,8 @@ public class OrdenamientoHeap implements  Ordenamiento{
 //Menor a mayor
     /**    (non-Javadoc)
      * Heap menor a mayor para fecha tipo LocalDate 
-     * @see Ordenamientos.Ordenamiento#ordenarMenor(java.util.ArrayList)
-     * @param lista Lista de bugs a ordenar
+     * @param listaBugs Lista de bugs a ordenar
+     * @return Lista de bugs ordenada por fecha
      */
     public ArrayList<Bug> ordenarFechaMenor(ArrayList<Bug> listaBugs) {
         ArrayList<Bug> listaFinal= new ArrayList<>(listaBugs);
