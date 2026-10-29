@@ -14,7 +14,7 @@ public class BusquedaBinaria {
 /*********************************************************************************************************************/
 
     /**
-     * Busqueda Binaria para la fecha ordenando con quick
+     * Busqueda binaria por fecha, ordenando previamente con Heap Sort
      * @param listaBugs Lista de bugs
      * @param fecha fecha por la que se buscara incidentes
      * @return la lista de los elementos encontrados
@@ -91,7 +91,7 @@ public class BusquedaBinaria {
 /*********************************************************************************************************************/
 
     /**
-     * Busqueda Binaria para la categoria ordenando con quick
+     * Busqueda binaria por categoria, ordenando previamente con Heap Sort
      * @param listaBugs lista de bugs
      * @param categoria categoria a buscar
      * @return la lista de los elementos encontrados
