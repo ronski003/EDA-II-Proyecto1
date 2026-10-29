@@ -39,7 +39,7 @@ public class Bug {
     }
     /**
      * metodo setter de id
-     * @param recibe el nuevo valor del id  y cambia el valor anterior del id
+     * @param ID recibe el nuevo valor del id  y cambia el valor anterior del id
      */
     public void setID(int ID) {
         this.ID = ID;
@@ -53,7 +53,7 @@ public class Bug {
     }
     /**
      * metodo setter de la prioridad
-     * @param recibe el nuevo valor de la prioridad  y cambia el valor anterior de la prioridad
+     * @param prioridad recibe el nuevo valor de la prioridad  y cambia el valor anterior de la prioridad
      */
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
@@ -67,7 +67,7 @@ public class Bug {
     }
     /**
      * metodo setter del nivelSeguridad
-     * @param recibe el nuevo valor del nivelSeguridad  y cambia el valor anterior del nivelSeguridad
+     * @param nivelSeguridad recibe el nuevo valor del nivelSeguridad  y cambia el valor anterior del nivelSeguridad
      */
     public void setNivelSeguridad(int nivelSeguridad) {
         this.nivelSeguridad = nivelSeguridad;
@@ -81,7 +81,7 @@ public class Bug {
     }
     /**
      * metodo getter del estado
-     * @param recibe el nuevo valor del estado  y cambia el valor anterior del estado
+     * @param estado recibe el nuevo valor del estado  y cambia el valor anterior del estado
      */
     public void setEstado(String estado) {
         this.estado = estado;
@@ -94,6 +94,10 @@ public class Bug {
         return categoria;
     }
 
+    /**
+     * Metodo setter de categoria
+     * @param categoria nueva categoria del bug
+     */
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
@@ -104,7 +108,10 @@ public class Bug {
     public LocalDate getFecha() {
         return fecha;
     }
-
+    /**
+     * Metodo setter de fecha
+     * @param fecha nueva fecha del bug
+     */
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
